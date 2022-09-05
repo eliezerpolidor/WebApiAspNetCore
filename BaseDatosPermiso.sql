@@ -1,0 +1,146 @@
+USE [master]
+GO
+/****** Object:  Database [permiso]    Script Date: 05/09/2022 14:42:47 ******/
+CREATE DATABASE [permiso]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'permiso', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\permiso.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'permiso_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\permiso_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [permiso] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [permiso].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [permiso] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [permiso] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [permiso] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [permiso] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [permiso] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [permiso] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [permiso] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [permiso] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [permiso] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [permiso] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [permiso] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [permiso] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [permiso] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [permiso] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [permiso] SET  ENABLE_BROKER 
+GO
+ALTER DATABASE [permiso] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [permiso] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [permiso] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [permiso] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [permiso] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [permiso] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [permiso] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [permiso] SET RECOVERY FULL 
+GO
+ALTER DATABASE [permiso] SET  MULTI_USER 
+GO
+ALTER DATABASE [permiso] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [permiso] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [permiso] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [permiso] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [permiso] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [permiso] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'permiso', N'ON'
+GO
+ALTER DATABASE [permiso] SET QUERY_STORE = OFF
+GO
+USE [permiso]
+GO
+/****** Object:  Table [dbo].[Permisos]    Script Date: 05/09/2022 14:42:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Permisos](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[NombreEmpleado] [text] NOT NULL,
+	[ApellidoEmpleado] [text] NOT NULL,
+	[TipoPermiso] [int] NOT NULL,
+	[FechaPermiso] [text] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TipoPermisos]    Script Date: 05/09/2022 14:42:48 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TipoPermisos](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Descripcion] [text] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Permisos] ON 
+GO
+INSERT [dbo].[Permisos] ([Id], [NombreEmpleado], [ApellidoEmpleado], [TipoPermiso], [FechaPermiso]) VALUES (2, N'Alberto', N'Pacheco', 3, N'16/09/2022')
+GO
+INSERT [dbo].[Permisos] ([Id], [NombreEmpleado], [ApellidoEmpleado], [TipoPermiso], [FechaPermiso]) VALUES (3, N'Pepe', N'Ramon', 1, N'24/08/2022')
+GO
+INSERT [dbo].[Permisos] ([Id], [NombreEmpleado], [ApellidoEmpleado], [TipoPermiso], [FechaPermiso]) VALUES (4, N'Josefina', N'Tabaco', 4, N'10/08/2022')
+GO
+SET IDENTITY_INSERT [dbo].[Permisos] OFF
+GO
+SET IDENTITY_INSERT [dbo].[TipoPermisos] ON 
+GO
+INSERT [dbo].[TipoPermisos] ([Id], [Descripcion]) VALUES (1, N'Médico')
+GO
+INSERT [dbo].[TipoPermisos] ([Id], [Descripcion]) VALUES (2, N'Vacaciones')
+GO
+INSERT [dbo].[TipoPermisos] ([Id], [Descripcion]) VALUES (3, N'Accidente Laboral')
+GO
+INSERT [dbo].[TipoPermisos] ([Id], [Descripcion]) VALUES (4, N'Corona Virus')
+GO
+SET IDENTITY_INSERT [dbo].[TipoPermisos] OFF
+GO
+ALTER TABLE [dbo].[Permisos]  WITH CHECK ADD  CONSTRAINT [FK_Permisos_TipoPermisos1] FOREIGN KEY([TipoPermiso])
+REFERENCES [dbo].[TipoPermisos] ([Id])
+GO
+ALTER TABLE [dbo].[Permisos] CHECK CONSTRAINT [FK_Permisos_TipoPermisos1]
+GO
+USE [master]
+GO
+ALTER DATABASE [permiso] SET  READ_WRITE 
+GO
