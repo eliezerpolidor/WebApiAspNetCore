@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WepApiSqlReact</name>
+    </assembly>
+    <members>
+        <member name="M:WepApiSqlReact.Controllers.PermisosController.Get">
+            <summary>
+            Consulta Todo los Persmisos de los Empleados......
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WepApiSqlReact.Controllers.PermisosController.Get(System.Int32)">
+            <summary>
+            Obtiene El Persmiso otorgado al Empleados.....
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WepApiSqlReact.Controllers.PermisosController.Post(WepApiSqlReact.Models.Permiso)">
+            <summary>
+            Solicitar Permiso al Empleado.....
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:WepApiSqlReact.Controllers.PermisosController.Put(System.Int32,WepApiSqlReact.Models.Permiso)">
+            <summary>
+            Modificar Persmiso del Empleado......
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
