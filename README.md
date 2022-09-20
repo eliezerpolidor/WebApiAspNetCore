@@ -1,5 +1,24 @@
 # Challenger Eliezer Polidor
-ChallengerEliezerP Asignación para Challenge Técnico para la posición de SSr Full Stack
+ChallengerEliezerP Asignación para Challenge Técnico para la posición de SSr Full Stack. 
+_____
+# Asignación:  
+La empresa N5 solicita una Web API para el registro de permisos de usuarios, para realizar
+esta tarea es necesario cumplir con los siguientes pasos:  
+•Cree una tablaaa de permisos con los siguientes campos  
+
+•Cree una tabla PermissionTypes con los siguientes campos:  
+
+•Crear relación entre Permiso y PermissionType.  
+•Cree una API web con ASP .NET Core y conserve los datos en SQL Server.  
+•Hacer uso de EntityFramework.  
+•La Web API debe tener 3 servicios “Solicitar Permiso”, “Modificar Permiso” y “Obtener permisos”. Cada servicio debe persistir un registro de permisos en un índice de búsqueda elástica, el registro insertado en elasticsearch debe contener la misma estructura de la tabla de la base de datos "permiso".  
+•Hacer uso del patrón de repositorio y la Unidad de trabajo y CQRS patrón (Deseado). Tenga en cuenta que se requiere apegarse a una arquitectura de servicio adecuada para que la creación de diferentes capas y la inyección de dependencia sea imprescindible.  
+• Crear pruebas unitarias para llamar a los tres servicios.  
+•Cree una aplicación en ReactJS y use Axios para conectarse al backend.  
+•Crear los formularios para consumir la Web API.  
+•Dale los estilos a las tres formas, para que se vea lo más atractivo y simple posible.  
+•Use buenas prácticas tanto como sea posible en el backend y frontend.  
+•Subir el ejercicio a algún repositorio (github, gitlab,etc).
 
 Explicación.  
 1.- Diseñe un diagrama de general de que es lo que hay que hacer esto se recomienda hacerl antes de ponerse a codificar,  
